@@ -1,0 +1,2 @@
+C:\Users\Owner\source\repos\key-wii\HW10\x64\Debug\HW10.exe
+C:\Users\Owner\source\repos\key-wii\HW10\x64\Debug\HW10.pdb

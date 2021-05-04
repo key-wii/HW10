@@ -22,6 +22,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="driver1.h" />
+    <ClInclude Include="driver2.h" />
+    <ClInclude Include="driver3.h" />
     <ClInclude Include="input.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

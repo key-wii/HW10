@@ -45,9 +45,9 @@ int menuOption()
 	cout << '\t' << char(186) << "   - Christopher Gomez\t- Gia Minh Hoang    " << char(186) << '\n';
 	cout << '\t' << char(186) << "   - Duyen Tran\t- Thien Vu          " << char(186) << '\n';
 	cout << "\t" << char(204) << string(43, char(205)) << char(185) << "\n";
-	cout << "\t" << char(186) << "   1:                                      " << char(186) << "\n";
-	cout << "\t" << char(186) << "   2:                                      " << char(186) << "\n";
-	cout << "\t" << char(186) << "   3:                                      " << char(186) << "\n";
+	cout << "\t" << char(186) << "   1: binary_tree_node                     " << char(186) << "\n";
+	cout << "\t" << char(186) << "   2: BinaryTree                           " << char(186) << "\n";
+	cout << "\t" << char(186) << "   3: Animal Guessing Game                 " << char(186) << "\n";
 	cout << "\t" << char(199) << string(43, char(196)) << char(182) << "\n";
 	cout << "\t" << char(186) << "   0: Exit                                 " << char(186) << "\n";
 	cout << "\t" << char(200) << string(43, char(205)) << char(188) << "\n";

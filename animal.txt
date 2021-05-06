@@ -1,0 +1,13 @@
+[Is it a mammal?]
+[Does it have stripes?]
+(zebra)
+[Is it a primeate?]
+(Baboon)
+(lion)
+[Is it a bird?]
+[Does it fly?]
+[Does it have long legs?]
+(RoadRunner)
+(eagle)
+(penguin)
+(gila monster)

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -11,49 +10,38 @@
 
 void instructions();
 void askAndMove(Binary_Tree_Node<string>*& currPtr);
-Binary_Tree_Node<string>* beginTree();
-void learnNewAnimal(Binary_Tree_Node<string>* currPtr);
+Binary_Tree_Node<string>* beginTree(Binary_Tree_Node<string>*& currPtr, ifstream& file);
+void learnNewAnimal(Binary_Tree_Node<string>*& currPtr);
 void runGame(Binary_Tree_Node<string>* currPtr);
-void playGame(Binary_Tree_Node<string>*& rootPtr);
+void playGame(Binary_Tree_Node<string>*& rootPtr, ifstream& file);
 void option3();
-void save(Binary_Tree_Node<string>*& rootPtr);
+void save(Binary_Tree_Node<string>*& rootPtr, ofstream& outfile);
 
-Binary_Tree_Node<string>* beginTree()
+Binary_Tree_Node<string>* beginTree(Binary_Tree_Node<string>*& currPtr, ifstream& file)
 {
-	ifstream file("animal.txt");
-	if (!file.is_open())
+
+	string input;
+	getline(file, input);
+	char delim = input[0];
+
+
+	input = input.substr(1, input.length() - 2);
+
+
+	currPtr = new Binary_Tree_Node<string>(input);
+	if (delim != '(')
 	{
-		cout << "Error! animal.txt now found!";
+		beginTree(currPtr->left(), file);
+		beginTree(currPtr->right(), file);
+	}
+	else
+	{
+		currPtr->left() = nullptr;
+		currPtr->right() = nullptr;
 	}
 
-	Binary_Tree_Node<string>* rootPtr;
-	Binary_Tree_Node<string>* childPtr;
-	const string rootQuestion("Is it  a mammal?");
-	const string leftQuestion("Does it have stripes?");
-	const string rightQuestion1("Is it a kind of bird?");
-	const string rightQuestion2("Does it fly?");
+	return currPtr;
 
-	const string animal1("zebra");
-	const string animal2("lion");
-	const string animal3("eagle");
-	const string animal4("penguin");
-	const string animal5("Gila monster");
-	rootPtr = new Binary_Tree_Node<string>(rootQuestion);
-	childPtr = new Binary_Tree_Node<string>(leftQuestion);
-	childPtr->setLeft(new Binary_Tree_Node<string>(animal1));
-	childPtr->setRight(new Binary_Tree_Node<string>(animal2));
-	rootPtr->setLeft(childPtr);
-	childPtr = new Binary_Tree_Node<string>(rightQuestion1);
-	childPtr->setLeft(new Binary_Tree_Node<string>(rightQuestion2));
-	childPtr->setRight(new Binary_Tree_Node<string>(animal5));
-	//Binary_Tree_Node<string>* holder = childPtr;
-	childPtr = childPtr->left();
-	childPtr->setLeft(new Binary_Tree_Node<string>(animal3));
-	childPtr->setRight(new Binary_Tree_Node<string>(animal4));
-	//childPtr = holder;
-	rootPtr->setRight(childPtr);
-
-	return rootPtr;
 }
 void askAndMove(Binary_Tree_Node<string>*& currPtr)
 {
@@ -64,14 +52,14 @@ void askAndMove(Binary_Tree_Node<string>*& currPtr)
 		currPtr = currPtr->right();
 
 }
-void learnNewAnimal(Binary_Tree_Node<string>* leafPtr)
+void learnNewAnimal(Binary_Tree_Node<string>*& leafPtr)
 {
 	string guess;
 	string correct;
 	string newQuestion;
 
 	guess = leafPtr->data();
-	cout << "\nAlright, I give. What was your animal?\n";
+	cout << "Alright, I give. What was your animal?\n";
 	getline(cin, correct);
 	cout << "Enter a new yes or no question that will distinguish a " << correct << " from a " << guess << ".\n";
 	getline(cin, newQuestion);
@@ -93,7 +81,7 @@ void learnNewAnimal(Binary_Tree_Node<string>* leafPtr)
 
 void runGame(Binary_Tree_Node<string>* currPtr)
 {
-	cout << "\nThink of an animal, then press the return key\n";
+	cout << "Think of an animal, then press the return key";
 	eatLine();
 	while (!currPtr->isLeaf())
 		askAndMove(currPtr);
@@ -115,16 +103,28 @@ void instructions()
 	cout << "\tobjects when it loses.\n";
 
 }
-void playGame(Binary_Tree_Node<string>*& rootPtr)
+void playGame(Binary_Tree_Node<string>*& rootPtr, ifstream& file)
 {
-	rootPtr = beginTree();
+	if (rootPtr->left() != nullptr)
+		deleteTree<string>(rootPtr);
+	rootPtr = new Binary_Tree_Node<string>();
+	rootPtr = beginTree(rootPtr, file);
 	//do
 	runGame(rootPtr);
 	//while (inquire("want to play again?"));
 	//cout << "Thanks for teaching me more about animals!\n";
 	return;
 }
-void save(Binary_Tree_Node<string>*& rootPtr)
+void save(Binary_Tree_Node<string>*& rootPtr, ofstream& outfile)
 {
-	//file writing stuff
+	if (rootPtr != nullptr)
+	{
+		if (!rootPtr->isLeaf())
+			outfile << '[' + rootPtr->data() + ']' << '\n';
+		else
+			outfile << '(' + rootPtr->data() + ')' << '\n';
+		save(rootPtr->left(), outfile);
+		save(rootPtr->right(), outfile);
+	}
+
 }

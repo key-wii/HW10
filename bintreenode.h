@@ -127,7 +127,21 @@ void delete_tree(Binary_Tree_Node<T>* leaf) // Recursive
 	delete leaf;
 
 }
+template<class T>
+void deleteTree(Binary_Tree_Node<T>* leaf) // Recursive
+{
+	if (leaf == nullptr)
+		return;
 
+	/* first delete both subtrees */
+	deleteTree(leaf->left());
+	deleteTree(leaf->right());
+
+	/* then delete the node */
+	//cout << "\n\t\tDeleting: " << leaf->data();
+	delete leaf;
+
+}
 void option1()
 {
 	// Bonsai Tree of string

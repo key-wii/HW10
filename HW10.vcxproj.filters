@@ -32,5 +32,11 @@
     <ClInclude Include="driver2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="animalGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bintreenode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

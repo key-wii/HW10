@@ -6,7 +6,26 @@
 #include <string>
 
 using namespace std;
+inline void eatLine()
+{
+	char next;
+	do
+		cin.get(next);
+	while (next != '\n');
+}
+inline bool inquire(const char query[])
+{
+	char answer;
+	do
+	{
+		cout << query << "Yes or No\n";
+		cin >> answer;
+		answer = toupper(answer);
+		eatLine();
+	} while ((answer != 'Y') && (answer != 'N'));
+	return(answer == 'Y');
 
+}
 //return an input char
 inline char inputChar(string prompt, string listChars)
 {

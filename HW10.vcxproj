@@ -22,9 +22,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bintreenode.h" />
     <ClInclude Include="driver1.h" />
     <ClInclude Include="driver2.h" />
     <ClInclude Include="driver3.h" />
+    <ClInclude Include="animalGame.h" />
     <ClInclude Include="input.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

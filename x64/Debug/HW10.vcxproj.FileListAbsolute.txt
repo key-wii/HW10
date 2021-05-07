@@ -2,3 +2,5 @@ C:\Users\Owner\source\repos\key-wii\HW10\x64\Debug\HW10.exe
 C:\Users\Owner\source\repos\key-wii\HW10\x64\Debug\HW10.pdb
 C:\Users\Barry\OneDrive\computer science\C++\131\Chapter 10\HW10\x64\Debug\HW10.exe
 C:\Users\Barry\OneDrive\computer science\C++\131\Chapter 10\HW10\x64\Debug\HW10.pdb
+E:\Alienware\SAC\CMPR 131\HW10\x64\Debug\HW10.exe
+E:\Alienware\SAC\CMPR 131\HW10\x64\Debug\HW10.pdb

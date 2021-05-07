@@ -14,11 +14,12 @@ void option2()
     int choice, findThis;
     BinaryTree twee;
     node* nod;
-    while (1) {
+    do
+    {
         cout << "\n";
         cout << "1. Insert a node/leaf\n";
         cout << "2. Delete a node/leaf\n";
-        //cout << "3. Count of nodes/leaves\n";
+        cout << "3. Count of nodes/leaves\n";
         cout << "4. Search a node/leaf\n";
         cout << "5. Pre-order traversal\n";
         cout << "6. In-order traversa\n";
@@ -26,14 +27,16 @@ void option2()
         //cout << "8. Delete the entire tree\n";
         cout << "9. Display the entire tree\n";
         cout << "0. Quit\n";
-        cout << "Option : ";
-        cin >> choice;
+        choice = inputInteger("Option : ", 0, 9);
         cout << "\n";
         switch (choice) {
         case 1:
             nod = new node;
-            cout << "Enter an integer : ";
-            cin >> nod->entry;
+            int input;
+            input = inputInteger("Enter an integer:");
+            //cout << "Enter an integer : ";        
+            nod->entry = input;
+            //cin >> nod->entry;
             twee.insert(righ, nod);
             break;
         case 2:
@@ -41,17 +44,21 @@ void option2()
                 cout << "ERROR: BinaryTree is empty.\n";
                 continue;
             }
-            cout << "Enter an integer : ";
-            cin >> findThis;
-            twee.remove(findThis);
+            int num;
+            num = inputInteger("Enter an integer:");
+            /*cout << "Enter an integer : ";
+            cin >> findThis;*/
+            twee.remove(num);
             break;
         case 3:
-            //MISSING COUNT
+            twee.Printcount();
             break;
         case 4:
-            cout << "Enter an integer key to search:\n";
-            cin >> findThis;
-            twee.search(righ, findThis);
+            /*cout << "Enter an integer key to search:\n";
+            cin >> findThis;*/
+            int num1;
+            num1 = inputInteger("Enter an integer:");
+            twee.search(righ, num1);
             break;
         case 5:
             cout << "Pre-order Traversal of BinaryTree:\n";
@@ -70,14 +77,15 @@ void option2()
             break;
         case 8:
             //MISSING DELETE TREE
+           // twee.Delete(twee);
             break;
         case 9:
             cout << "Display BinaryTree:\n";
-            twee.print(righ, 1);
+            twee.print(righ, twee.getCount());
             cout << "\n";
             break;
-        case 0: exit(0);
+        case 0: return;
         default: cout << "\tERROR-Invalid Option. Please re-enter."; break;
         }
-    }
+    } while (true);
 }

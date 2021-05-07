@@ -19,23 +19,38 @@ class BinaryTree {
         void noNull(node*, node*);
         void oneNull(node*, node*);
         void bothNull(node*, node*);
-        //void count();
+        void Printcount();
         void search(node*, int);
         void preorder(node*);
         void inorder(node*);
         void postorder(node*);
         //void delete();
         void print(node*, int);
+        int getCount();
         BinaryTree() {
             righ = NULL;
+            count = 0;
         }
+private:
+    int count;
 };
+
+int BinaryTree::getCount()
+{
+    return count;
+}
+void BinaryTree::Printcount()
+{
+    cout << "\n\tCount of Nodes = " << count << ".\n";
+}
+
 void BinaryTree::insert(node *tree, node *newnode) {
     if (righ == NULL) {
         righ = new node;
         righ->entry = newnode->entry;
         righ->left = NULL;
         righ->righ = NULL;
+        count++;
         return;
     }
     if (tree->entry > newnode->entry) {
@@ -46,6 +61,7 @@ void BinaryTree::insert(node *tree, node *newnode) {
             tree->left = newnode;
             (tree->left)->left = NULL;
             (tree->left)->righ = NULL;
+            count++;
             return;
         }
     }
@@ -57,6 +73,7 @@ void BinaryTree::insert(node *tree, node *newnode) {
             tree->righ = newnode;
             (tree->righ)->left = NULL;
             (tree->righ)->righ = NULL;
+            count++;
             return;
         }
     }
@@ -76,6 +93,7 @@ void BinaryTree::remove(int i) {
     if ((b->left != NULL && b->righ == NULL) || (b->left == NULL && b->righ != NULL)) oneNull(a, b);
     if (b->left == NULL && b->righ == NULL) bothNull(a, b);
     free(b);
+    count--;
 }
 void BinaryTree::find(int i, node **a, node **b) {
     node *ptr, *ptrTemp;
@@ -219,9 +237,11 @@ void BinaryTree::postorder(node *ptr) {
 void BinaryTree::print(node *ptr, int level) {
     int i;
     if (ptr != NULL) {
+        cout <<"\n\t";
         for (i = 0; i < level; i++)
             cout << " ";
         cout << ptr->entry;
-        print(ptr->left, level + 1);
+        print(ptr->left, level);
+        print(ptr->righ, level);
     }
 }

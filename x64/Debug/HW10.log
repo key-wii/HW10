@@ -1,1 +1,4 @@
-﻿  HW10.vcxproj -> E:\Alienware\SAC\CMPR 131\HW10\x64\Debug\HW10.exe
+﻿  main.cpp
+C:\Users\lopez\OneDrive\Escritorio\HW10\driver2.h(14,17): warning C4101: 'findThis': unreferenced local variable
+  LINK : C:\Users\lopez\OneDrive\Escritorio\HW10\x64\Debug\HW10.exe not found or not built by the last incremental link; performing full link
+  HW10.vcxproj -> C:\Users\lopez\OneDrive\Escritorio\HW10\x64\Debug\HW10.exe

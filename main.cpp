@@ -34,7 +34,7 @@ int main()
 }
 
 int menuOption()
-{
+{ 
 	system("cls");
 	cout << '\n';
 	cout << '\t' << char(201) << string(50, char(205)) << char(187) << '\n';
